@@ -1,0 +1,370 @@
+/* CONFIGURAÇÃO DE CORES DA PALETA CORPORATIVA */
+:root {
+  --primary-color: #D98A2B;       /* Cor Principal */
+  --dark-brown: #4E342E;          /* Marrom Escuro */
+  --beige-custom: #D8C29D;        /* Bege */
+  --black-custom: #121212;        /* Preto */
+  --white-custom: #FFFFFF;        /* Branco */
+  --light-gray: #F5F5F5;          /* Cinza Claro */
+  --dark-gray: #1a1a1a;
+}
+
+/* GERAL */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--white-custom);
+  color: var(--black-custom);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* CABEÇALHO */
+.bg-dark-custom {
+  background-color: var(--black-custom) !important;
+  border-bottom: 3px solid var(--primary-color);
+}
+.logo-wrapper {
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: white;
+}
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.brand-name {
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+}
+.text-primary-custom {
+  color: var(--primary-color) !important;
+}
+.search-container {
+  width: 40%;
+}
+@media (max-width: 991px) {
+  .search-container { width: 100%; }
+}
+.search-input {
+  background-color: var(--dark-gray);
+  border: 1px solid #333;
+  color: white !important;
+}
+.search-input:focus {
+  background-color: var(--dark-gray);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(217, 138, 43, 0.5);
+}
+.search-btn {
+  background-color: var(--primary-color) !important;
+  border: none;
+  color: white !important;
+}
+.nav-link {
+  color: var(--white-custom) !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-color) !important;
+}
+.nav-icon-link {
+  transition: transform 0.2s;
+}
+.nav-icon-link:hover {
+  transform: scale(1.15);
+  color: var(--primary-color) !important;
+}
+
+/* BANNER PRINCIPAL */
+.main-banner {
+  min-height: 500px;
+  /* Troque pelo caminho do seu banner */
+  background-image: url('./img/BANNER\ \(2\).png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 5px solid var(--primary-color);
+  padding: 100px 0;
+}
+
+.banner-bg-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(18,18,18,0.9) 30%, rgba(78,52,46,0.5) 100%);
+  z-index: 1;
+}
+.brand-hero-title {
+  font-weight: 900 !important;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+.font-slogan {
+  color: var(--beige-custom) !important;
+  font-style: italic;
+}
+.btn-primary-custom {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+.btn-primary-custom:hover {
+  background-color: #b8711e !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 138, 43, 0.4);
+}
+.banner-placeholder {
+  border: 3px dashed var(--primary-color);
+  background: rgba(18,18,18,0.7);
+  border-radius: 12px;
+  min-height: 250px;
+  z-index: 2;
+  position: relative;
+}
+.banner-inner-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+}
+.placeholder-tag {
+  color: var(--primary-color);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* SEÇÃO DE CATEGORIAS */
+.category-card {
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.category-card:hover {
+  background-color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+.category-icon {
+  font-size: 2.2rem;
+}
+.col-md-2-custom {
+  flex: 0 0 auto;
+  width: 20%;
+}
+@media (max-width: 768px) {
+  .col-md-2-custom { width: 33.33%; }
+}
+@media (max-width: 480px) {
+  .col-md-2-custom { width: 50%; }
+}
+
+/* CARDS DOS PRODUTOS */
+.product-card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+  border-color: var(--primary-color);
+}
+.badge-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.badge-custom {
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-uppercase;
+}
+.badge-promo { background-color: #dc3545; color: white; }
+.badge-stock { background-color: var(--dark-brown); color: white; }
+
+/* Imagem Real do Produto */
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--light-gray);
+  border-bottom: 1px solid #eee;
+  transition: transform 0.4s ease;
+}
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.product-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+/* Detalhes do Corpo do Card */
+.card-body-custom {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.p-category {
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-uppercase; 
+}
+.p-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: var(--black-custom);
+  line-height: 1.3;
+}
+.price-box {
+  background-color: var(--light-gray);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.old-price {
+  font-size: 0.8rem;
+  color: #888;
+  text-decoration: line-through;
+}
+.promo-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--black-custom);
+}
+.discount-pill {
+  font-size: 0.75rem;
+  background-color: rgba(217, 138, 43, 0.15);
+  color: var(--primary-color);
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.stock-counter {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: auto;
+  margin-bottom: 12px;
+}
+
+/* Botões do Card */
+.btn-details {
+  border: 1px solid #ccc !important;
+  background-color: transparent !important;
+  color: #555 !important;
+}
+.btn-details:hover {
+  background-color: #eee !important;
+}
+
+/* SEÇÃO DE OFERTAS INTERNAS */
+.bg-light-custom {
+  background-color: var(--light-gray);
+}
+.shadow-inner {
+  box-shadow: inset 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* PLACEHOLDER ESPECÍFICO DO MODAL */
+.modal-placeholder-box {
+  border: 2px dashed #bbb;
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  min-height: 250px;
+}
+
+/* ITENS DO CARRINHO LATERAL */
+.cart-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+.cart-placeholder-mini {
+  width: 50px;
+  height: 50px;
+  background: var(--light-gray);
+  border: 1px dashed var(--primary-color);
+  border-radius: 4px;
+  font-size: 0.5rem;
+}
+.qty-input {
+  width: 50px;
+  text-align: center;
+}
+
+/* RODAPÉ */
+.footer-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+}
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+  margin-bottom: 8px;
+}
+.footer-links a:hover {
+  color: var(--primary-color);
+  padding-left: 4px;
+}
+.social-icon-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.social-icon-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* ANIMAÇÕES GERAIS */
+.section-fade-in {
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.title-underline {
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+  margin: 8px auto 0;
+}

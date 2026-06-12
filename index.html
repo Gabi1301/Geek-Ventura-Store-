@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geek Ventura Store | Seu Universo Geek Começa Aqui</title>
+  <!-- Favicon Reserva (Aponta para a logo corporativa) -->
+  <!-- Favicon Reserva (Aponta para a logo corporativa) -->
+<link rel="icon" type="image/jpg" href="./img/logo.png">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/embed.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS Customizado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO FIXO -->
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark-custom sticky-top shadow-sm">
+    <div class="container-fluid container-header">
+      <a class="navbar-brand d-flex align-items-center" href="#" onclick="app.filterCategory('')">
+        <div class="logo-wrapper me-2">
+          <!-- Logo real da marca -->
+          <img src="../img/logo.png" alt="Geek Ventura Logo" class="brand-logo">
+        </div>
+        <span class="brand-name fw-bold">Geek Ventura<span class="text-primary-custom"> Store</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="text/custom-toggle" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <!-- BARRA DE PESQUISA EM TEMPO REAL -->
+        <div class="mx-auto my-2 my-lg-0 search-container position-relative">
+          <div class="input-group">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Pesquisar por nome ou categoria do produto...">
+            <span class="input-group-text search-btn"><i class="fas fa-search"></i></span>
+          </div>
+        </div>
+
+        <!-- MENU PRINCIPAL -->
+        <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item"><a class="nav-link active" href="#" onclick="app.resetLayout()">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#vitrine-produtos" onclick="app.filterCategory('')">Produtos</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="catDropdown" role="button" data-bs-toggle="dropdown">Categorias</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-menu-item" href="#vitrine-produtos" onclick="app.filterCategory('Anime')">🎌 Anime</a></li>
+              <li><a class="dropdown-menu-item" href="#vitrine-produtos" onclick="app.filterCategory('Jogos')">🎮 Jogos</a></li>
+              <li><a class="dropdown-menu-item" href="#vitrine-produtos" onclick="app.filterCategory('RPG')">⚔️ RPG</a></li>
+              <li><a class="dropdown-menu-item" href="#vitrine-produtos" onclick="app.filterCategory('Eletrônicos')">🖥️ Eletrônicos</a></li>
+              <li><a class="dropdown-menu-item" href="#vitrine-produtos" onclick="app.filterCategory('Música')">🎵 Música</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="app.showOffersOnly()">Promoções</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rodape">Contato</a></li>
+        </ul>
+
+        <!-- ÍCONES DE USUÁRIO E CARRINHO -->
+        <div class="d-flex align-items-center ms-lg-3 header-actions">
+          <a href="#" class="text-white me-3 position-relative nav-icon-link" title="Minha Conta">
+            <i class="fas fa-user fa-lg"></i>
+          </a>
+          <a href="#" class="text-white position-relative nav-icon-link" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" title="Carrinho de Compras">
+            <i class="fas fa-shopping-cart fa-lg"></i>
+            <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary-custom">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER PRINCIPAL -->
+  <section class="main-banner position-relative overflow-hidden mb-5 d-flex align-items-center">
+    <div class="container position-relative z-index-2">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-white text-center text-lg-start section-fade-in">
+          <h1 class="display-3 fw-black text-uppercase brand-hero-title mb-2">GEEK VENTURA STORE</h1>
+          <p class="lead text-beige-custom mb-4 font-slogan">"Seu Universo Geek Começa Aqui"</p>
+          <a href="#vitrine-produtos" class="btn btn-primary-custom btn-lg px-4 py-2 text-uppercase fw-bold shadow">Explorar Produtos</a>
+        </div>
+      </div>
+    </div>
+    <div class="banner-bg-overlay"></div>
+  </section>
+
+  <!-- SEÇÃO DE CATEGORIAS POR ÍCONES -->
+  <section class="container mb-5">
+    <div class="text-center mb-4">
+      <h2 class="section-title text-uppercase">Navegue por Categorias</h2>
+      <div class="title-underline"></div>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-6 col-sm-4 col-md-2-custom">
+        <div class="category-card text-center p-3 h-100" onclick="app.filterCategory('Anime')">
+          <div class="category-icon">🎌</div>
+          <h5 class="mt-2 mb-0">Anime</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2-custom">
+        <div class="category-card text-center p-3 h-100" onclick="app.filterCategory('Jogos')">
+          <div class="category-icon">🎮</div>
+          <h5 class="mt-2 mb-0">Jogos</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2-custom">
+        <div class="category-card text-center p-3 h-100" onclick="app.filterCategory('RPG')">
+          <div class="category-icon">⚔️</div>
+          <h5 class="mt-2 mb-0">RPG</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2-custom">
+        <div class="category-card text-center p-3 h-100" onclick="app.filterCategory('Eletrônicos')">
+          <div class="category-icon">🖥️</div>
+          <h5 class="mt-2 mb-0">Eletrônicos</h5>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2-custom">
+        <div class="category-card text-center p-3 h-100" onclick="app.filterCategory('Música')">
+          <div class="category-icon">🎵</div>
+          <h5 class="mt-2 mb-0">Música</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VITRINE DE PRODUTOS -->
+  <main class="container mb-5" id="vitrine-produtos">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 border-bottom pb-2">
+      <div>
+        <h2 id="vitrineTitle" class="section-title text-uppercase mb-0">Todos os Produtos</h2>
+        <p id="vitrineSub" class="text-muted mb-0">Explorando o melhor da cultura pop</p>
+      </div>
+      <div class="mt-2 mt-sm-0">
+        <span class="badge bg-dark p-2" id="resultsCounter">Mostrando 50 produtos</span>
+      </div>
+    </div>
+
+    <!-- Grid Dinâmico via JavaScript -->
+    <div class="row g-4" id="productsGrid">
+      <!-- Injetado dinamicamente -->
+    </div>
+  </main>
+
+  <!-- OFERTAS DA SEMANA (ESTOQUES CRÍTICOS) -->
+  <section class="bg-light-custom py-5 mb-5 shadow-inner" id="ofertas-semana">
+    <div class="container">
+      <div class="d-flex align-items-center mb-4">
+        <span class="fs-2 me-2">🔥</span>
+        <h2 class="section-title text-uppercase mb-0">Ofertas da Semana</h2>
+      </div>
+      <div class="row g-4" id="offersGrid">
+        <!-- Injetado dinamicamente via App.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALHES DO PRODUTO -->
+  <div class="modal fade" id="productDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 bg-dark text-white">
+          <h5 class="modal-title fw-bold text-uppercase" id="modalProductName">Detalhes do Produto</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-md-5 text-center">
+              <!-- Imagem do Produto no Modal -->
+              <div class="modal-img-wrapper d-flex align-items-center justify-content-center rounded overflow-hidden" style="min-height:250px; background:var(--light-gray);">
+                <img
+                  id="modalProductImage"
+                  src=""
+                  alt=""
+                  class="img-fluid rounded"
+                  style="max-height:300px; width:100%; object-fit:contain;"
+                  onerror="this.onerror=null; this.src='./img/placeholder.png';"
+                >
+              </div>
+            </div>
+            <div class="col-md-7">
+              <span id="modalProductCategory" class="badge bg-secondary mb-2 text-uppercase">Categoria</span>
+              <span id="modalProductCode" class="text-muted ms-2 small">Cód: </span>
+              <h3 id="modalRealName" class="fw-bold mb-3">Nome</h3>
+              <div class="p-3 bg-light rounded mb-3">
+                <div class="text-decoration-line-through text-muted small" id="modalPriceOriginal">De: </div>
+                <div class="fs-3 fw-bold text-primary-custom" id="modalPricePromotional">Por: </div>
+              </div>
+              <div class="mb-3">
+                <span class="fw-bold">Disponibilidade: </span>
+                <span id="modalProductStock" class="badge">0 unidades</span>
+              </div>
+              <p class="text-muted" id="modalProductDescription">Descrição do produto.</p>
+              <button id="modalBuyBtn" class="btn btn-primary-custom w-100 py-3 mt-2 text-uppercase fw-bold">Comprar <i class="fas fa-cart-plus ms-1"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFCANVAS DO CARRINHO (LATERAL MODERNO) -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header bg-dark text-white">
+      <h5 class="offcanvas-title fw-bold" id="cartOffcanvasLabel"><i class="fas fa-shopping-cart me-2"></i>Seu Carrinho</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-shadow="none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-0">
+      <!-- Itens do Carrinho -->
+      <div class="p-3 flex-grow-1 overflow-y-auto" id="cartItemsContainer">
+        <!-- Injetado dinamicamente -->
+      </div>
+      
+      <!-- Resumo de Valores Finais -->
+      <div class="p-3 bg-light border-top mt-auto">
+        <div class="d-flex justify-content-between mb-2">
+          <span class="text-muted">Subtotal:</span>
+          <span class="fw-bold" id="cartSubtotal">R$ 0,00</span>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+          <span class="fs-5 fw-bold">Total:</span>
+          <span class="fs-5 fw-bold text-primary-custom" id="cartTotal">R$ 0,00</span>
+        </div>
+        <button class="btn btn-primary-custom w-100 py-2 text-uppercase fw-bold" onclick="app.checkout()">Finalizar Pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-dark text-white pt-5 pb-3" id="rodape">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center mb-3">
+            <img src="./img/logo.png" alt="Logo Rodapé" class="footer-logo me-2">
+            <h4 class="fw-bold mb-0 text-uppercase">Geek Ventura</h4>
+          </div>
+          <p class="text-muted">A Geek Ventura Store é o seu portal definitivo para o universo de Anime, Jogos, RPG, Eletrônicos de alto desempenho e Artigos Musicais colecionáveis.</p>
+          <p class="text-primary-custom fw-bold">"Seu Universo Geek Começa Aqui"</p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold text-uppercase border-start border-primary-custom ps-2 mb-3">Links Úteis</h5>
+          <ul class="list-unstyled footer-links">
+            <li><a href="#" onclick="app.resetLayout()">Sobre Nós</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#vitrine-produtos">Nossos Produtos</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold text-uppercase border-start border-primary-custom ps-2 mb-3">Contato</h5>
+          <ul class="list-unstyled text-muted footer-contact">
+            <li><i class="fas fa-envelope me-2 text-primary-custom"></i> contato@geekventura.com.br</li>
+            <li><i class="fas fa-phone-alt me-2 text-primary-custom"></i> (11) 4002-8922</li>
+            <li><i class="fas fa-map-marker-alt me-2 text-primary-custom"></i> Av. Paulista, 1000 - São Paulo, SP</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="fw-bold text-uppercase border-start border-primary-custom ps-2 mb-3">Redes Sociais</h5>
+          <div class="d-flex gap-3 social-icons mt-3">
+            <a href="#" class="social-icon-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon-btn"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon-btn"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <div class="text-center text-muted small">
+        <p>&copy; 2026 Geek Ventura Store. Todos os direitos reservados. Desenvolvido para Portfólio Acadêmico/Profissional.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle com Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Scripts Customizados Integrados -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
